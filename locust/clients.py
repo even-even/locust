@@ -255,14 +255,16 @@ class HttpSession(requests.Session):
             prep._explicit_name = self.explicit_name  # type: ignore
         return prep
 
-    def get(
+    @override
+    def get(  # type: ignore[override]
         self, url: str | bytes, *, data: Any = None, json: Any = None, **kwargs: Unpack[RESTKwargs]
     ) -> ResponseContextManager:
         """Sends a GET request"""
         kwargs.setdefault("allow_redirects", True)
         return self.request("GET", url, data=data, json=json, **kwargs)
 
-    def options(
+    @override
+    def options(  # type: ignore[override]
         self,
         url: str | bytes,
         *,
@@ -274,7 +276,8 @@ class HttpSession(requests.Session):
         kwargs.setdefault("allow_redirects", True)
         return self.request("OPTIONS", url, data=data, json=json, **kwargs)
 
-    def head(
+    @override
+    def head(  # type: ignore[override]
         self,
         url: str | bytes,
         *,
@@ -286,7 +289,8 @@ class HttpSession(requests.Session):
         kwargs.setdefault("allow_redirects", False)
         return self.request("HEAD", url, data=data, json=json, **kwargs)
 
-    def post(
+    @override
+    def post(  # type: ignore[override]
         self,
         url: str | bytes,
         data: Any = None,
@@ -296,7 +300,8 @@ class HttpSession(requests.Session):
         """Sends a POST request"""
         return self.request("POST", url, data=data, json=json, **kwargs)
 
-    def put(
+    @override
+    def put(  # type: ignore[override]
         self,
         url: str | bytes,
         data: Any = None,
@@ -307,7 +312,8 @@ class HttpSession(requests.Session):
         """Sends a PUT request"""
         return self.request("PUT", url, data=data, json=json, **kwargs)
 
-    def patch(
+    @override
+    def patch(  # type: ignore[override]
         self,
         url: str | bytes,
         data: Any = None,
@@ -318,7 +324,8 @@ class HttpSession(requests.Session):
         """Sends a PATCH request"""
         return self.request("PATCH", url, data=data, json=json, **kwargs)
 
-    def delete(
+    @override
+    def delete(  # type: ignore[override]
         self,
         url: str | bytes,
         *,

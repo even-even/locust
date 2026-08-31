@@ -293,7 +293,7 @@ class PytestUser(User):
     functions: list[pytest.Function]
     fixtures: list
 
-    @override
+    @override  # type: ignore[misc]
     def run(self):  # type: ignore[override] # We actually DO want to change the default User behavior
         self._state = LOCUST_STATE_RUNNING
         self.fixtures = [next(f.fixturedef.func(self)) for f in self.functions]  # type: ignore[attr-defined]
